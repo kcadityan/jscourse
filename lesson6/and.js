@@ -8,3 +8,4 @@ if (age < 5 && gender==='boy' ) {
 if (age < 5 && gender==='girl' ) {
     console.log('play with a doll')
 }
+          
