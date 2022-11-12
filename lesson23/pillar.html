@@ -1,0 +1,54 @@
+<div id="batman_div" class="batman"><img id="batman" src="batman.png" alt="batman"></div>
+<div id="dangerdiv" class="danger"><img class="pillar" src="game_danger.png" alt="danger"></div>
+<script>
+    document.addEventListener('keydown', function (event) {
+        console.log(event.key)
+        if (event.key === 'ArrowRight') {
+            right();
+        }
+        if (event.key === 'ArrowLeft') {
+            left();
+        }
+    })
+
+    function left() {
+        const div = document.getElementById("batman_div")
+        const style = getComputedStyle(div)
+        const leftStr = style.getPropertyValue('left')
+        const left = parseInt(leftStr, 10)
+        console.log(left)
+        document.getElementById("batman_div").style.left = (left - 10) + "px"
+    }
+
+    function right() {
+        const div = document.getElementById("batman_div")
+        const style = getComputedStyle(div)
+        const leftStr = style.getPropertyValue('left')
+        const left = parseInt(leftStr, 10)
+        console.log(left)
+        document.getElementById("batman_div").style.left = (left + 10) + "px"
+    }
+
+</script>
+<style>
+    .batman {
+        position: relative;
+        left: 300px;
+        width: 200px;
+        /* border: 3px solid green; */
+    }
+
+
+    .pillar {
+        position: relative;
+        left: 800px;
+        width: 150px;
+        height: 100%;
+
+        max-width: 100%;
+        max-height: 100%;
+
+        border: 3px solid green;
+
+    }
+</style>
