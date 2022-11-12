@@ -1,0 +1,18 @@
+<div><img id="uparrow" src="arrowup.jpg" alt="up"></div>
+<script>
+    document.addEventListener('keydown', function (event) {
+        console.log(event.key)
+        if (event.key === 'ArrowDown') {
+            down();
+        }
+        if (event.key === 'ArrowUp') {
+            up();
+        }
+    })
+    function down() {
+        document.getElementById('uparrow').src = "arrowdown1.png"
+    }
+    function up() {
+        document.getElementById('uparrow').src = "arrowup.jpg"
+    }
+</script>
