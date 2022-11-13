@@ -3,7 +3,6 @@
     <div id="danger2div" class="danger2"><img id="pillar2" class="pillar2" src="inverted_flappy_pillar.jpeg"
             alt="danger2"></div>
     <div id="dangerdiv" class="danger"><img id="pillar" class="pillar" src="pillar.png" alt="danger"></div>
-
     <div id="wallpaperdiv" class="wallpaper"><img id="wallpaperid" class="wallpaperclass" src="flappybackground.png"
             alt="background"></div>
 </div>
@@ -13,22 +12,32 @@
         console.log(event.key)
         if (event.key === 'ArrowRight') {
             move('right');
-        }
-        if (event.key === 'ArrowLeft') {
+        } else if (event.key === 'ArrowLeft') {
             move('left');
+        } else if (event.key === 'ArrowUp') {
+            move('up');
+        } else if (event.key === 'ArrowDown') {
+            move('down');
         }
+        event.preventDefault();
     })
 
     function move(dir) {
         const div = document.getElementById("batman_div")
         const style = getComputedStyle(div)
         const leftStr = style.getPropertyValue('left')
+        const topStr = style.getPropertyValue('top')
         const left = parseInt(leftStr, 10)
+        const top = parseInt(topStr, 10)
         console.log(left)
         if (dir === 'left')
             document.getElementById("batman_div").style.left = (left - 10) + "px"
-        else
+        else if (dir === 'right')
             document.getElementById("batman_div").style.left = (left + 10) + "px"
+        else if (dir === 'up')
+            document.getElementById("batman_div").style.top = (top - 10) + "px"
+        else
+            document.getElementById("batman_div").style.top = (top + 10) + "px"
 
         sprite_crashed()
     }
@@ -78,11 +87,10 @@
         width: 200px;
         top: 100px;
         opacity: 0.3;
-
         /* border: 3px solid green; */
     }
 
-    .danger {    
+    .danger {
         position: absolute;
         top: 400px;
         margin-top: 200px;
@@ -114,6 +122,5 @@
         object-fit: cover;
         background-size: cover;
         border: 3px solid green;
-
     }
 </style>
