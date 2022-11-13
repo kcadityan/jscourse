@@ -1,8 +1,13 @@
 <div>
     <div id="batman_div" class="batman"><img id="batman" src="batman.png" alt="batman"></div>
-    <div id="danger2div" class="danger2"><img id="pillar2" class="pillar2" src="inverted_flappy_pillar.jpeg"alt="danger2"></div>
+    <div id="danger2div" class="danger2"><img id="pillar2" class="pillar2" src="inverted_flappy_pillar.jpeg"
+            alt="danger2"></div>
     <div id="dangerdiv" class="danger"><img id="pillar" class="pillar" src="pillar.png" alt="danger"></div>
+
+    <div id="wallpaperdiv" class="wallpaper"><img id="wallpaperid" class="wallpaperclass" src="flappybackground.png"
+            alt="background"></div>
 </div>
+
 <script>
     document.addEventListener('keydown', function (event) {
         console.log(event.key)
@@ -14,38 +19,21 @@
         }
     })
 
-
     function move(dir) {
         const div = document.getElementById("batman_div")
         const style = getComputedStyle(div)
         const leftStr = style.getPropertyValue('left')
         const left = parseInt(leftStr, 10)
         console.log(left)
-        if ( dir === 'left')
+        if (dir === 'left')
             document.getElementById("batman_div").style.left = (left - 10) + "px"
-        else 
+        else
             document.getElementById("batman_div").style.left = (left + 10) + "px"
 
         sprite_crashed()
     }
 
-   
-
     function hasCrashed(r1, r2, r3) {
-        console.log('r1=', r1, 'r2=', r2, 'r3=', r3)
-
-        console.log('r1.x', r1.x)
-        let r1xw = r1.x + r1.width
-        console.log('r1xw', r1xw)
-        console.log(r1.width)
-
-        let top_coll1 = r1.x + r1.width >= r2.x
-        let top_coll2 = r1.y <= r2.y + r2.height
-        let bott_col1 = r1.x + r1.width >= r3.x
-        let bott_coll2 = r1.y + r1.height <= r3.y
-
-        console.log(top_coll1, top_coll2, bott_col1, bott_coll2)
-
         if (r1.x + r1.width >= r2.x && r1.y <= r2.y + r2.height ||
             r1.x + r1.width >= r3.x && r1.y + r1.height <= r3.y) {
             return true
@@ -80,25 +68,19 @@
         };
 
         const h1 = hasCrashed(batRect, pRect, p2Rect)
-
-        console.log('batRect = ', batRect)
-        console.log('pRect = ', pRect)
-        console.log('p2Rect = ', p2Rect)
-        console.log(h1)
     }
     sprite_crashed()
-
 </script>
 <style>
     .batman {
-        position: relative;
+        position: absolute;
         left: 0px;
         width: 200px;
         top: 100px;
-        ;
-        border: 3px solid green;
-    }
+        opacity: 0.3;
 
+        /* border: 3px solid green; */
+    }
 
     .danger {
         position: absolute;
@@ -106,12 +88,10 @@
         left: 300px;
         width: 200px;
         height: 100%;
-
         max-width: 100%;
         max-height: 100%;
-
-        border: 3px solid green;
-
+        opacity: 0.3;
+        /* border: 3px solid green; */
     }
 
     .danger2 {
@@ -120,10 +100,18 @@
         left: 300px;
         width: 200px;
         height: 100%;
-
         max-width: 100%;
         max-height: 100%;
+        opacity: 0.3;
+        /* border: 3px solid green; */
+    }
 
+    .wallpaperclass {
+        position: top;
+        width: 100%;
+        height: 1000px;
+        object-fit: cover;
+        background-size: cover;
         border: 3px solid green;
 
     }
