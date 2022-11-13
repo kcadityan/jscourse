@@ -1,40 +1,35 @@
 <div>
     <div id="batman_div" class="batman"><img id="batman" src="batman.png" alt="batman"></div>
-    <div id="danger2div" class="danger2"><img id="pillar2" class="pillar2" src="inverted_flappy_pillar.jpeg"
-            alt="danger2">
-    </div>
+    <div id="danger2div" class="danger2"><img id="pillar2" class="pillar2" src="inverted_flappy_pillar.jpeg"alt="danger2"></div>
     <div id="dangerdiv" class="danger"><img id="pillar" class="pillar" src="pillar.png" alt="danger"></div>
 </div>
 <script>
     document.addEventListener('keydown', function (event) {
         console.log(event.key)
         if (event.key === 'ArrowRight') {
-            right();
+            move('right');
         }
         if (event.key === 'ArrowLeft') {
-            left();
+            move('left');
         }
     })
 
-    function left() {
+
+    function move(dir) {
         const div = document.getElementById("batman_div")
         const style = getComputedStyle(div)
         const leftStr = style.getPropertyValue('left')
         const left = parseInt(leftStr, 10)
         console.log(left)
-        document.getElementById("batman_div").style.left = (left - 10) + "px"
+        if ( dir === 'left')
+            document.getElementById("batman_div").style.left = (left - 10) + "px"
+        else 
+            document.getElementById("batman_div").style.left = (left + 10) + "px"
+
         sprite_crashed()
     }
 
-    function right() {
-        const div = document.getElementById("batman_div")
-        const style = getComputedStyle(div)
-        const leftStr = style.getPropertyValue('left')
-        const left = parseInt(leftStr, 10)
-        console.log(left)
-        document.getElementById("batman_div").style.left = (left + 10) + "px"
-        sprite_crashed()
-    }
+   
 
     function hasCrashed(r1, r2, r3) {
         console.log('r1=', r1, 'r2=', r2, 'r3=', r3)
@@ -93,9 +88,6 @@
     }
     sprite_crashed()
 
-    function game_over(){
-        
-    }
 </script>
 <style>
     .batman {
