@@ -9,17 +9,17 @@
 </div>
 
 <script>
-
-
-
     document.addEventListener('keydown', function (event) {
         console.log(event.key)
 
         const myAudio = document.getElementById("myAudio");
         myAudio.play();
 
+        if (true === sprite_crashed()) {
+            event.preventDefault();
+            return 'game over 😭 '
+        }
 
-        myAudio.play()
         if (event.key === 'ArrowRight') {
             move('right');
         } else if (event.key === 'ArrowLeft') {
@@ -29,6 +29,7 @@
         } else if (event.key === 'ArrowDown') {
             move('down');
         }
+
         event.preventDefault();
     })
 
@@ -49,7 +50,7 @@
         else
             document.getElementById("batman_div").style.top = (top + 10) + "px"
 
-        sprite_crashed()
+        isgameOver()
     }
 
     function hasCrashed(r1, r2, r3) {
@@ -62,35 +63,36 @@
         }
     }
 
+    function makeRect(a) {
+        return {
+            x: parseInt(getComputedStyle(a).getPropertyValue('left')),
+            y: parseInt(getComputedStyle(a).getPropertyValue('top')),
+            height: parseInt(getComputedStyle(a).getPropertyValue('height')),
+            width: parseInt(getComputedStyle(a).getPropertyValue('width'))
+        }
+    }
+
     function sprite_crashed() {
         const sprite = document.getElementById('batman_div')
         const pillar = document.getElementById('dangerdiv')
         const pillar2 = document.getElementById('danger2div')
-
-        const batRect = {
-            x: parseInt(getComputedStyle(sprite).getPropertyValue('left')),
-            y: parseInt(getComputedStyle(sprite).getPropertyValue('top')),
-            height: parseInt(getComputedStyle(sprite).getPropertyValue('height')),
-            width: parseInt(getComputedStyle(sprite).getPropertyValue('width'))
-        }
-        const pRect = {
-            x: parseInt(getComputedStyle(pillar).getPropertyValue('left')),
-            y: parseInt(getComputedStyle(pillar).getPropertyValue('top')),
-            height: parseInt(getComputedStyle(pillar).getPropertyValue('height')),
-            width: parseInt(getComputedStyle(pillar).getPropertyValue('width'))
-        };
-        const p2Rect = {
-            x: parseInt(getComputedStyle(pillar2).getPropertyValue('left')),
-            y: parseInt(getComputedStyle(pillar2).getPropertyValue('top')),
-            height: parseInt(getComputedStyle(pillar2).getPropertyValue('height')),
-            width: parseInt(getComputedStyle(pillar2).getPropertyValue('width'))
-        };
+        const batRect = makeRect(sprite)
+        const pRect = makeRect(pillar)
+        const p2Rect = makeRect(pillar2)
 
         const h1 = hasCrashed(batRect, pRect, p2Rect)
+        return h1
     }
 
+    function play_gameover_animation() {
+        console.log('game over')
+    }
 
-    // myAudio.pause();
+    function isgameOver() {
+        if (true === sprite_crashed()) {
+            play_gameover_animation()
+        }
+    }
 
     sprite_crashed()
 
