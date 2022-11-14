@@ -9,6 +9,8 @@
 </div>
 
 <script>
+    const ground = 1000;
+
     document.addEventListener('keydown', function (event) {
         console.log(event.key)
 
@@ -19,6 +21,7 @@
             event.preventDefault();
             return 'game over 😭 '
         }
+
 
         if (event.key === 'ArrowRight') {
             move('right');
@@ -93,8 +96,25 @@
             play_gameover_animation()
         }
     }
-
     sprite_crashed()
+    startGravity()
+    function startGravity() {
+        setInterval(function () {
+            console.log('gravity will apply now..')
+            const sprite = document.getElementById('batman_div')
+            const batRect = makeRect(sprite)
+
+            if (!hasHitGround(batRect))
+                move('down')
+        }, 100)
+    }
+
+    function hasHitGround(r) {
+        if (r.y + r.height >= ground)
+            return true
+        else
+            return false
+    }
 
 </script>
 <style>
@@ -110,7 +130,7 @@
     .danger {
         position: absolute;
         top: 400px;
-        margin-top: 200px;
+        margin-top: 300px;
         left: 300px;
         width: 200px;
         height: 100%;
