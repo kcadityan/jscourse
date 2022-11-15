@@ -60,8 +60,9 @@
     }
 
     function hasCrashed(r1, r2, r3) {
-        if (r1.x + r1.width >= r2.x && r1.y <= r2.y + r2.height ||
-            r1.x + r1.width >= r3.x && r1.y + r1.height <= r3.y) {
+        if ((r1.x + r1.width >= r2.x) && (r1.y <= r2.y + r2.height)
+            ||
+            (r1.x + r1.width >= r3.x) && (r1.y + r1.height >= r3.y)) {
             return true
         }
         else {
@@ -123,8 +124,7 @@
             if (!hasHitGround(batRect) && noKeyPressInLastSec())
                 move('down')
         }, 100)
-    }   
-    shfvsdhfh
+    }
 
 
 
@@ -144,7 +144,7 @@
         width: 200px;
         top: 100px;
         opacity: 0.3;
-        /* border: 3px solid green; */
+        border: 3px solid green;
     }
 
     .danger {
@@ -163,7 +163,7 @@
     .danger2 {
         position: absolute;
         top: 0px;
-        margin-top: -300px;
+        margin-top: -200px;
         left: 300px;
         width: 200px;
         height: 350px;
