@@ -59,9 +59,17 @@
     }
 
     function hasCrashed(r1, r2, r3) {
+        console.log('1', (r1.x + r1.width >= r2.x))
+        console.log('2', (r1.y <= r2.y + r2.height))
+        console.log('3', (r1.x + r1.width >= r3.x))
+        console.log('4', (r1.y + r1.height >= r3.y))
+
+        console.log(r1.y, r2.y, r2.height)
+
         if ((r1.x + r1.width >= r2.x) && (r1.y <= r2.y + r2.height)
             ||
             (r1.x + r1.width >= r3.x) && (r1.y + r1.height >= r3.y)) {
+            console.log('crash ... .')
             return true
         }
         else {
@@ -80,13 +88,14 @@
 
     function sprite_crashed() {
         const sprite = document.getElementById('batman_div')
-        const pillar = document.getElementById('dangerdiv')
         const pillar2 = document.getElementById('danger2div')
-        const batRect = makeRect(sprite)
-        const pRect = makeRect(pillar)
-        const p2Rect = makeRect(pillar2)
+        const pillar = document.getElementById('dangerdiv')
 
-        const h1 = hasCrashed(batRect, pRect, p2Rect)
+        const batRect = makeRect(sprite)
+        const p2Rect = makeRect(pillar2)
+        const pRect = makeRect(pillar)
+
+        const h1 = hasCrashed(batRect, p2Rect, pRect)
         return h1
     }
 
@@ -116,13 +125,13 @@
 
     function startGravity() {
         setInterval(function () {
-            console.log('gravity will apply now..')
+            // console.log('gravity will apply now..')
             const sprite = document.getElementById('batman_div')
             const batRect = makeRect(sprite)
-            console.log(noKeyPressInLastSec())
+            // console.log(noKeyPressInLastSec())
             if (!hasHitGround(batRect) && noKeyPressInLastSec())
                 move('down')
-        }, 100)
+        }, 3000)
     }
 
 
@@ -148,8 +157,8 @@
 
     .danger {
         position: absolute;
-        top: 400px;
-        margin-top: 300px;
+        top: 500px;
+        margin-top: 0px;
         left: 300px;
         width: 200px;
         height: 100%;
@@ -165,7 +174,7 @@
         margin-top: -200px;
         left: 300px;
         width: 200px;
-        height: 350px;
+        height: 100px;
         max-width: 100%;
         max-height: 100%;
         opacity: 0.3;
