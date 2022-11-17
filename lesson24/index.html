@@ -1,0 +1,103 @@
+<div id="bird"></div>
+
+<!-- set 1 -->
+<div id="pipe1"></div>
+<div id="pipe2"></div>
+
+<!-- set 2 -->
+<div id="pipe3"></div>
+<div id="pipe4"></div>
+
+<!-- set 3 -->
+<div id="pipe5"></div>
+<div id="pipe6"></div>
+
+<div id="ground"></div>
+<style>
+    body {
+  background: url(http://i.imgur.com/M4nHGk2.png) rgb(118, 224, 120) repeat-x;
+  overflow: hidden;
+}
+#pipe1, #pipe2, #pipe3, #pipe4, #pipe5, #pipe6 {
+  animation: pipe 10s steps(300) infinite;
+  position: absolute;
+  width: 52px;
+}
+#pipe1 {
+  background: url(http://i.imgur.com/mM1XkAr.png) no-repeat;
+  height: 320px;
+  bottom: -90px;
+}
+#pipe2 {
+  background: url(http://i.imgur.com/5vpjnAe.png) no-repeat;
+  height: 320px;
+  top: -50px;
+}
+#pipe3 {
+  background: url(http://i.imgur.com/mM1XkAr.png) no-repeat;
+  height: 320px;
+  bottom: 0px;
+  margin-left: 300px;
+}
+#pipe4 {
+  background: url(http://i.imgur.com/5vpjnAe.png) no-repeat;
+  height: 320px;
+  margin-left: 300px;
+}
+#pipe5 {
+  background: url(http://i.imgur.com/mM1XkAr.png) no-repeat;
+  height: 320px;
+  bottom: 40px;
+  margin-left: 600px;
+}
+#pipe6 {
+  background: url(http://i.imgur.com/5vpjnAe.png) no-repeat;
+  height: 320px;
+  top: -50px;
+  margin-left: 600px;
+}
+#ground {
+  animation: ground 1s steps(22) infinite;
+  background: url(http://i.imgur.com/jTiHrXl.png) repeat-x;
+  background-position: 0px 0px;
+  bottom: 0;
+  height: 112px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+#bird {
+  animation: bird 0.4s steps(4) infinite;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAABICAYAAACTKCf+AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAACW0lEQVRoQ+2WQWocMRBFfYpcIVfI0qusAz5RjpQT2MscIFtvQna+gqGDAi+of15JGhg8InjxYFRVv/5neuzW3XEcF/Hw6fNxCamv0OIIMxuR+got9uTi55/fFPovr88nqOfeRIs9LAIL0aB/9SAsSMMfjx9PMJcBEubSB7TYQPjmQRisyABA//vT0x+qAHnGF/YJQiMfQcLce5CE+UsDAXP7B2GhmTfSkHNCf5X9gvCBhi1vrPZfvtxfBLr9gmSg5NfXDwr9XLwKvvsHMdMR6Ag0g3l89w0CDIKZG6mrSL/ToSeFZmqkriL9TocRtsxI3SpaNMzUSN0qWhxh5iNSX6HFEWY2IvUVWuzJxfZCbNBffe0nWuxhEViIBv2rB2FBGpYvuwiQMJc+oMUGwpsFQVAZJ8xXV0T6eU7f06HB4M2CMGBmI9D9v0FmWJgG/SoQMIcv7BOEBj/OGcxbmAb9VfYNwiIzb6QR56zbtXAEun2C8NVQmFFdDXPxKn8fzXZBgIE0nIGOQDOYx3ffIMAgmLmRuor0Ox16UmimRuoq0u90GGHLjNStokXDTI3UraLFEWY+IvUVWhxhZiNSX6HFnlxs//4b9Fdf+4kWe1gEFqJB/+pBWJCG5csuAiTMpQ9osYHwZkEQVMYJ89UVkX6e0/d0aDB4syAMmNkIdO9BEvRVIGAOX9g3yAwL0WOaEfsFocAi/myTNOKcdbsWjkC3XxAz72Guuhrm4lX+eTRm3sPcmwfJrzwDJMwRaAbz+wXhA40KMzdMa+AL+wWZYcuM1K2iRcNMjdStcdz9BgBI8oVcT1YyAAAAAElFTkSuQmCC);
+  background-position: 0px 0px;
+  height: 24px;
+  left: 33%;
+  position: absolute;
+  top: 50%;
+  width: 34px;
+}
+@-webkit-keyframes bird {
+  from {
+    background-position: 0px  0px;
+  }
+  to {
+    background-position: 0px -96px;
+  }
+}
+@-webkit-keyframes ground {
+  from { 
+    background-position: 0px; 
+  }
+  to {
+    background-position: 196px; 
+  }
+}
+@-webkit-keyframes pipe {
+  from { 
+    left: 90%; 
+  }
+  to { 
+    left: -90%; 
+  }
+}
+</style>
